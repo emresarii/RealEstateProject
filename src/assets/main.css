@@ -1,0 +1,16 @@
+@import './base.css';
+
+#app {
+  min-height: 100vh;
+  font-weight: normal;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  transition: 0.4s;
+}
+
+nav a.router-link-exact-active {
+  color:#90DDF0;
+}
