@@ -7,7 +7,7 @@ import NavBar from "./components/navigation/NavBar.vue";
 <template>
   <div class="main-container">
     <NavBar/>
-    <RouterView />
+    <RouterView class="view-container"/>
   </div>
 
 </template>
@@ -16,8 +16,10 @@ import NavBar from "./components/navigation/NavBar.vue";
 .main-container{
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
   width: 100vw;
 }
 
+.view-container{
+  margin-left: 50px;
+}
 </style>

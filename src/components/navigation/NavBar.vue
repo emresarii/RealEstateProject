@@ -7,8 +7,9 @@ import NavBarItem from "@/components/navigation/NavBarItem.vue";
   <div class="nav-bar">
     <nav>
       <div class="route-container">
+        <img class="logo" alt="" src="src/assets/logo.svg">
         <NavBarItem path="/" title="Ana Sayfa" imgpath="src/assets/home-icon.svg"></NavBarItem>
-        <NavBarItem path="/randevular" title="Randevular"></NavBarItem>
+        <NavBarItem path="/randevular" title="Randevular" imgpath="src/assets/randevular-icon.svg"></NavBarItem>
       </div>
     </nav>
   </div>
@@ -30,5 +31,10 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.logo {
+  width: 190px;
+  padding-bottom: 40px;
 }
 </style>

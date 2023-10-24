@@ -1,1 +1,4 @@
-/// <reference types="vite/client" />
+/// <reference models="vite/client" />
+interface ImportMetaEnv {
+    readonly VITE_API_KEY: string;
+}
