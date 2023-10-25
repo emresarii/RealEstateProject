@@ -5,10 +5,10 @@ const store = useAppointmentStore();
 onMounted(() => {
   return store.fetchAppointments()
 })
+
 </script>
 <template>
   <div class="list-container">
-    <h1>Made By Getters</h1>
     <div class="list-headers">
       <div class="list-header">Appointment Time</div>
       <div class="list-header">Contact Email</div>
@@ -18,10 +18,9 @@ onMounted(() => {
       <div class="list-view">
         <div class="list-item">{{ appointment.id }}</div>
         <div class="list-item">{{ appointment.createdTime }}</div>
-        <div class="list-item">{{ appointment.fields.contact_email[0] }}</div>
+        <div v-if="Array.isArray(appointment.fields.contact_email)" class="list-item">{{appointment.fields.contact_email[0]}}</div>
+        <div class="list-item" v-else>No Email Information</div>
       </div>
-
-
     </div>
   </div>
 </template>

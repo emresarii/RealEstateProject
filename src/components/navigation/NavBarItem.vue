@@ -17,10 +17,10 @@ import {RouterLink} from "vue-router";
 <style scoped>
 .nav-bar-item {
   padding: 8px;
-  width: 145px;
+  width: 175px;
   transition: all 0.3s;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 15px;
 }

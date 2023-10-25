@@ -16,6 +16,14 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AppointView.vue')
+    },
+    {
+      path: '/randevuolustur',
+      name: 'randevu oluştur',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/CreateAppointView.vue')
     }
   ]
 })

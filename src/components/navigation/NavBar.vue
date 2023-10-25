@@ -10,6 +10,7 @@ import NavBarItem from "@/components/navigation/NavBarItem.vue";
         <img class="logo" alt="" src="src/assets/logo.svg">
         <NavBarItem path="/" title="Ana Sayfa" imgpath="src/assets/home-icon.svg"></NavBarItem>
         <NavBarItem path="/randevular" title="Randevular" imgpath="src/assets/randevular-icon.svg"></NavBarItem>
+        <NavBarItem path="/randevuolustur" title="Randevu Oluştur" imgpath="src/assets/randevular-icon.svg"></NavBarItem>
       </div>
     </nav>
   </div>

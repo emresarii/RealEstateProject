@@ -13,4 +13,4 @@ interface Appointment {
 }
 
 
-export {Appointment}
+export type {Appointment}

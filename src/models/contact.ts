@@ -1,4 +1,4 @@
-export default interface Contact {
+interface Contact {
     contact_id: Array<string>;
     contact_name: Array<string>;
     contact_surname: Array<string>;
@@ -6,3 +6,5 @@ export default interface Contact {
     contact_phone:Array<string>;
     appointments: Array<string>;
 }
+
+export type {Contact}

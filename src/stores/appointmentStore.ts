@@ -5,11 +5,13 @@ import type {Appointment} from "@/models/appointment";
 interface FilterParams{
     offset?: string;
 }
+
 export const useAppointmentStore = defineStore("appointment", {
     state: () => ({
         appointments: Array<Appointment>,
         pageSize: 10,
-        offset: null
+        offset: null,
+        appointment: null,
     }),
     getters: {
         getAppointments(state){
@@ -32,6 +34,18 @@ export const useAppointmentStore = defineStore("appointment", {
                 console.log(error)
                 return []
             }
+        },
+        async createAppointment(postData: Appointment) {
+            try {
+                const data = await axios.post('Appointments', {fields:{...postData}})
+                this.appointment = data.data
+
+            }
+            catch (error) {
+                alert(error)
+                console.log(error)
+            }
         }
     },
+
 })
