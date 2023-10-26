@@ -2,6 +2,7 @@ import axios from "@/lib/axios";
 import { defineStore } from 'pinia'
 import type {Appointment} from "@/models/appointment";
 
+
 interface FilterParams{
     offset?: string;
 }
@@ -12,10 +13,14 @@ export const useAppointmentStore = defineStore("appointment", {
         pageSize: 10,
         offset: null,
         appointment: null,
+        postcode: null,
     }),
     getters: {
         getAppointments(state){
             return state.appointments
+        },
+        getPostcode(state){
+            return state.postcode
         }
     },
     actions: {
@@ -45,7 +50,8 @@ export const useAppointmentStore = defineStore("appointment", {
                 alert(error)
                 console.log(error)
             }
-        }
+        },
     },
+
 
 })

@@ -15,7 +15,8 @@
       <select v-model="contact_id" @change="handleContact">
         <option v-for="contact in contactStore.getContacts" :key="contact.id" :value="contact.id">{{contact.fields.contact_name}} {{contact.fields.contact_surname}}</option>
       </select>
-
+      <SelectMap v-on:location="handleLocation"></SelectMap>
+      <div>{{location}}</div>
       <div class="submit">
         <button>Create an Appointment</button>
       </div>
@@ -34,10 +35,14 @@ import { useAgentStore } from "@/stores/agentStore";
 import {ref} from "vue";
 import {useContactStore} from "@/stores/contactStore";
 import {useAppointmentStore} from "@/stores/appointmentStore";
+import SelectMap from "@/components/maps/SelectMap.vue";
+import {usePostcodeStore} from "@/stores/getPostCode";
+
 
 const agentStore = useAgentStore();
 const contactStore = useContactStore();
 const appointStore = useAppointmentStore();
+const postcodeStore = usePostcodeStore();
 onMounted(() => {
   agentStore.fetchAgents()
   contactStore.fetchContacts()
@@ -49,6 +54,9 @@ const contact_id = ref('');
 const agent_id = ref('');
 const contact_email = ref('')
 const contact_phone = ref('')
+const location= ref('')
+const apiKey = 'YOUR_API_KEY';
+
 
 function handleContact(){
   const contacts = JSON.parse(JSON.stringify(contactStore.getContacts))
@@ -62,8 +70,8 @@ function handleContact(){
   }
 
 }
+
 function handleSubmit() {
-  console.log(JSON.parse(JSON.stringify(contactStore.getContacts)))
   const payload = {
     appointment_date: appointment_date.value,
     appointment_postcode: appointment_postcode.value,
@@ -71,6 +79,11 @@ function handleSubmit() {
     agent_id:[agent_id.value]
   }
   appointStore.createAppointment(payload)
+}
+
+function handleLocation(newLocation) {
+  location.value= newLocation
+  postcodeStore.getPostcode(JSON.parse(JSON.stringify(location.value)))
 }
 
 </script>
