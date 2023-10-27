@@ -27,6 +27,14 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
+### Create Env File
+
+```sh
+Create a .env file and include below;
+VITE_API_KEY: string;
+VITE_GOOGLE_MAPS_API_KEY: string;
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
@@ -66,3 +74,5 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+
