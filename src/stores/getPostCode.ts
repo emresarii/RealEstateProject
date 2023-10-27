@@ -7,14 +7,14 @@ export const usePostcodeStore = defineStore("postcode", {
         postcode: null,
     }),
     getters: {
-        getContacts(state){
+        getPost(state){
             return state.postcode
         }
     },
     actions: {
         async getPostcode(params: object) {
             try {
-                const data = await postcodes.post('', {params})
+                const data = await postcodes.get('', {params})
                 this.postcode = data.data
 
             }

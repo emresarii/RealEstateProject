@@ -5,15 +5,17 @@ import type {Appointment} from "@/models/appointment";
 
 interface FilterParams{
     offset?: string;
-}
+    pageSize?: number;
 
+}
 export const useAppointmentStore = defineStore("appointment", {
     state: () => ({
-        appointments: Array<Appointment>,
-        pageSize: 10,
+        appointments: [] as Appointment[],
+        pageSize: 18,
         offset: null,
-        appointment: null,
+        appointment: {},
         postcode: null,
+        sort: "desc",
     }),
     getters: {
         getAppointments(state){
@@ -21,17 +23,23 @@ export const useAppointmentStore = defineStore("appointment", {
         },
         getPostcode(state){
             return state.postcode
+        },
+        getSingleApp(state){
+            return state.appointment
         }
     },
     actions: {
         async fetchAppointments() : Promise<Array<Appointment>> {
             try {
-                const params:FilterParams = {}
+                const params:FilterParams = {
+                    pageSize: this.pageSize,
+                }
                 if(this.offset){
                     params.offset= this.offset
                 }
-                const data = await axios.get('Appointments',{params})
-                this.appointments = data.data.records
+                const data = await axios.get('Appointments',{params: {...params,"sort[0][field]":"appointment_date","sort[0][direction]": this.sort}})
+                this.appointments = [...this.appointments,...data.data.records]
+                this.offset= data.data.offset
 
             }
             catch (error) {
@@ -51,6 +59,23 @@ export const useAppointmentStore = defineStore("appointment", {
                 console.log(error)
             }
         },
+        setSorting(order:string){
+            this.appointments= []
+            this.offset = null
+            this.sort=order
+        },
+        async getAppointment(id:string) {
+            try {
+                const data = await axios.get(`Appointments/${id}` )
+                this.appointment = data.data
+
+            }
+            catch (error) {
+                alert(error)
+                console.log(error)
+            }
+        }
+
     },
 
 

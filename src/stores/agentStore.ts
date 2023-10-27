@@ -26,9 +26,9 @@ export const useAgentStore = defineStore("agent", {
                 return []
             }
         },
-        async fetchAgent() : Promise<Array<Agent>> {
+        async fetchAgent(agent:string) : Promise<Array<Agent>> {
             try {
-                const data = await axios.get('Agents')
+                const data = await axios.get('Agents/')
                 this.agents = data.data.records
 
             }
