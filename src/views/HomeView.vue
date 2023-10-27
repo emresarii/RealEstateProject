@@ -17,5 +17,6 @@
   width: calc(100vw - 300px);
   justify-content: center;
   align-items: center;
+
 }
 </style>
